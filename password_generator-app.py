@@ -22,9 +22,9 @@ def generate_character():
 def password_generator(len = 12, count = 1):
     if (len <= 0 or len > 25) and (count <= 0):
         passwords_str = "Invalid password length and password count"
-    elif (len <= 0 or len > 25) and (count > 0):
+    elif (len <= 0 or len > 25) and (0 < count < 100):
         passwords_str = "Invalid password length"
-    elif (count <= 0) and (0 < len <= 25):
+    elif (count <= 0 or count > 100) and (0 < len <= 25):
         passwords_str = "Invalid password count"
     else:
         generate_text.set("Working")
@@ -48,6 +48,7 @@ def password_generator(len = 12, count = 1):
 
 root = tk.Tk()
 root.title("Password Generator")
+root.iconbitmap("C:\\Users\\nathe\\OneDrive\\Documents\\GitHub\\Password-Generator\\exe\\logo.ico")
 
 canvas = tk.Canvas(root, width = 750, height = 500, bg = "#28313F")
 canvas.grid(columnspan = 2, rowspan = 5)
@@ -58,7 +59,7 @@ instructions = tk.Label(root,
     \n I recomend about 5 passwords at a time
     \n
     \n Password length can be any integer between 1 and 25.
-    \n Password count must be a positive integer.""",
+    \n Ammount of Passwords must be a positive integer less than 100.""",
     bg = "#28313F",
     fg = "white"
     )
